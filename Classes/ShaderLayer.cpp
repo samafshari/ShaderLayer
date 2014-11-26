@@ -56,15 +56,15 @@ bool ShaderLayer::init(string pixelShaderFile, string vertexShaderFile)
 void ShaderLayer::visit(
 	Renderer *renderer,
 	const Mat4& parentTransform,
-	bool parentTransformUpdated)
+	uint32_t parentFlags)
 {
 	renderTexture->beginWithClear(0, 0, 0, 0);
 	for (auto child : getChildren())
 	{
 		if (child != renderTexture && child != rendTexSprite)
-			child->visit(renderer, parentTransform, parentTransformUpdated);
+			child->visit(renderer, parentTransform, parentFlags);
 	}
 	renderTexture->end();
 
-	rendTexSprite->visit(renderer, parentTransform, parentTransformUpdated);
+	rendTexSprite->visit(renderer, parentTransform, parentFlags);
 }
