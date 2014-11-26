@@ -25,7 +25,7 @@ public:
 	virtual void visit(
 		Renderer *renderer,
 		const Mat4& parentTransform,
-		bool parentTransformUpdated) override;
+		uint32_t parentFlags) override;
 };
 
 #endif
